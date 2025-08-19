@@ -21,8 +21,9 @@
     "noImplicitAny": true,
     "strictBindCallApply": true,
     "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
     "paths": {
-      "@timestack/shared": ["./packages/timestack-shared/dist/src/index"]
+      "@timestack/shared": ["packages/timestack-shared/dist/src/index"]
     }
   }
 }

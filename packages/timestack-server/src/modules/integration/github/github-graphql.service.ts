@@ -1,11 +1,10 @@
 import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { graphql as gql } from '@octokit/graphql';
 import { isNonEmpty, isNull } from '@timestack/shared';
 
 @Injectable()
 export class GithubGraphqlService implements OnModuleInit, OnModuleDestroy {
-  private githubClient: typeof gql | null = null;
+  private githubClient: string | null = null;
 
   constructor(private readonly configService: ConfigService) {}
 
@@ -14,15 +13,11 @@ export class GithubGraphqlService implements OnModuleInit, OnModuleDestroy {
     const token = this.configService.get<string>('GITHUB_PERSONAL_TOKEN', '');
 
     if (isNonEmpty(token)) {
-      this.githubClient = gql.defaults({
-        headers: {
-          authorization: `token ${token}`,
-        },
-      });
+      this.githubClient = '';
     }
   }
 
-  public getGithubGraphqlClient(): typeof gql {
+  public getGithubGraphqlClient() {
     if (isNull(this.githubClient)) {
       throw new Error('github graphql client not initialized');
     }

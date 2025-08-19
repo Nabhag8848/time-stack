@@ -6,10 +6,13 @@ import {
   ManyToOne,
   JoinColumn,
   OneToMany,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { User } from './user.entity';
 import { Client } from './client.entity';
 import { Task } from './task.entity';
+import { Tag } from './tag.entity';
 
 @Entity({ name: 'project', schema: 'core' })
 export class Project extends BaseEntity {
@@ -38,4 +41,13 @@ export class Project extends BaseEntity {
     createForeignKeyConstraints: true,
   })
   tasks: Task[];
+
+  @ManyToMany(() => Tag, (tag) => tag.projects)
+  @JoinTable({
+    name: 'project_tag',
+    schema: 'core',
+    joinColumn: { name: 'project_id', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'tag_id', referencedColumnName: 'id' },
+  })
+  tags: Tag[];
 }

@@ -5,8 +5,10 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
+  ManyToMany,
 } from 'typeorm';
 import { User } from './user.entity';
+import { Project } from './project.entity';
 
 @Entity({ name: 'tag', schema: 'core' })
 export class Tag extends BaseEntity {
@@ -21,4 +23,10 @@ export class Tag extends BaseEntity {
 
   @Column({ type: 'varchar', length: 20 })
   name: string;
+
+  @Column({ type: 'varchar', length: 30 })
+  color: string;
+
+  @ManyToMany(() => Project, (project) => project.tags)
+  projects: Project[];
 }

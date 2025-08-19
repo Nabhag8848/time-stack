@@ -27,7 +27,7 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar', length: 500, nullable: true })
   profile_picture: string;
 
-  @Column({ type: 'uuid', generated: true, unique: true })
+  @Column({ type: 'uuid', unique: true, default: () => 'gen_random_uuid()' })
   workspace_id: string;
 
   @OneToMany(() => Client, (client) => client.user)

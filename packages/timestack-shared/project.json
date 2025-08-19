@@ -1,0 +1,26 @@
+{
+  "name": "timestack-shared",
+  "tags": ["type:lib", "scope:shared"],
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/timestack-shared/src",
+  "projectType": "library",
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --project tsconfig.lib.json --noEmit",
+        "cwd": "packages/timestack-shared"
+      }
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "packages/timestack-shared/dist",
+        "main": "packages/timestack-shared/src/index.ts",
+        "tsConfig": "packages/timestack-shared/tsconfig.lib.json",
+        "packageJson": "packages/timestack-shared/package.json"
+      }
+    }
+  }
+}

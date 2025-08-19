@@ -1,0 +1,24 @@
+{
+  "name": "timestack-ui",
+  "tags": ["type:lib", "scope:ui"],
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/timestack-ui/src",
+  "projectType": "library",
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --project tsconfig.lib.json --noEmit",
+        "cwd": "packages/timestack-ui"
+      }
+    },
+    "shadcn:component:add": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx shadcn@latest add {args.component}",
+        "cwd": "packages/timestack-ui"
+      },
+      "description": "Add a shadcn component to the UI library"
+    }
+  }
+}

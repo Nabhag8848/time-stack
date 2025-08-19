@@ -1,0 +1,24 @@
+{
+  "name": "timestack-front",
+  "tags": ["type:app", "scope:front"],
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/timestack-front/src",
+  "projectType": "application",
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --project tsconfig.app.json --noEmit",
+        "cwd": "packages/timestack-front"
+      },
+      "dependsOn": ["^typecheck"]
+    },
+    "graphql:codegen": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "graphql-codegen --config src/modules/graphql/codegen.ts",
+        "cwd": "packages/timestack-front"
+      }
+    }
+  }
+}

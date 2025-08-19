@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declarationMap": false,
+    "emitDeclarationOnly": false,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "lib": ["es2022"],
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "customConditions": ["development"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": false,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@timestack/shared": ["./packages/timestack-shared/dist/src/index"]
+    }
+  }
+}

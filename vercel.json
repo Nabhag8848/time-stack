@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "name": "timestack",
+  "buildCommand": "yarn nx build timestack-front",
+  "outputDirectory": "packages/timestack-front/dist",
+  "installCommand": "yarn install",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

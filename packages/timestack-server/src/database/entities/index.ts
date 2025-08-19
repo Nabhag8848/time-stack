@@ -1,2 +1,2 @@
 // Export all entities
-export { Mcp } from './core/mcp.entity';
+export { User } from './core/user.entity';

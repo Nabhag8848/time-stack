@@ -21,7 +21,6 @@ export const createTypeOrmOptions = (): TypeOrmModuleOptions => ({
   extra: {
     options: '-c search_path=public,core',
   },
-
   synchronize: false,
 });
 

@@ -1,4 +1,14 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToMany,
+} from 'typeorm';
+import { Client } from './client.entity';
+import { Project } from './project.entity';
+import { Task } from './task.entity';
+import { Tag } from './tag.entity';
 
 @Entity({
   name: 'user',
@@ -16,4 +26,19 @@ export class User extends BaseEntity {
 
   @Column({ type: 'varchar', length: 500, nullable: true })
   profile_picture: string;
+
+  @Column({ type: 'uuid', generated: true, unique: true })
+  workspace_id: string;
+
+  @OneToMany(() => Client, (client) => client.user)
+  clients: Client[];
+
+  @OneToMany(() => Project, (project) => project.user)
+  projects: Project[];
+
+  @OneToMany(() => Task, (task) => task.user)
+  tasks: Task[];
+
+  @OneToMany(() => Tag, (tag) => tag.user)
+  tags: Tag[];
 }
